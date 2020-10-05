@@ -12,9 +12,10 @@ class Users(models.Model):
     def __str__(self):
         return self.username
 
-    def count(self):
-        total_exercises = self.objects.get(username=self.username).entries.count()
+    def get_count(self):
+        total_exercises = Users.objects.get(username=self.username).entries.count()
         return total_exercises
+        
 
 
 class Exercise(models.Model):
@@ -24,4 +25,4 @@ class Exercise(models.Model):
     date = models.DateField(default=date.today)
 
     def __str__(self):
-        return self.username
+        return self.username.username
